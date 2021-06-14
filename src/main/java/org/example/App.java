@@ -154,15 +154,15 @@ public class App
         //uz by mala byt aj telpota ok
         Subor subor = new Subor();
         List<Data> list = subor.allData2();
-
+/*
         for(Data data : list){
             System.out.println(data.getDate() + " " + data.getTemperature());
         }
 
+ */
         Database database = new Database();
-        //database.insertData(list);
-        //database.selectData();
-        //database.insertData2(list);
+
+        database.insertData2(list);
         database.selectData2();
 
     }
