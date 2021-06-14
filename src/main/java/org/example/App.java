@@ -120,8 +120,40 @@ public class App
 
  */
 
+
+
+        //toto je OKEJ
+        /*
         Subor subor = new Subor();
         List<Data> list = subor.allData();
+
+        for(Data data : list){
+            System.out.println(data.getDate() + " " + data.getTemperature());
+        }
+
+        Database database = new Database();
+        //database.insertData(list);
+        //database.selectData();
+        //database.insertData2(list);
+        database.selectData2();
+
+         */
+
+
+        //testovanie validatora malo bz to byt okej
+        /*
+        Subor subor = new Subor();
+        List<Data> list = subor.allData2();
+
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i).getDate() + " " + list.get(i).getTemperature());
+        }
+
+         */
+
+        //uz by mala byt aj telpota ok
+        Subor subor = new Subor();
+        List<Data> list = subor.allData2();
 
         for(Data data : list){
             System.out.println(data.getDate() + " " + data.getTemperature());

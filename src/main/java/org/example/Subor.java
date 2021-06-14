@@ -64,4 +64,49 @@ public class Subor {
     }
 
 
+    //osetrene s validatorom
+    public List<Data> allData2() throws ParseException {
+        List<String> list = readFile();
+        List<Data> list2 = new ArrayList<>();
+
+        for(int i = 0; i < list.size(); i++){
+            String[] pole = list.get(i).split(" ", 3);
+            String datum = pole[0];
+            String cas = pole[1];
+            String teplota = pole[2];
+            String upravenyDatum2 = "";
+            //kontrolujeme datum ci je ok
+            for(int j = 0; j < datum.length(); j++){
+                if(datum.charAt(j) == '.'){
+                    upravenyDatum2 += '/';
+                }else{
+                    upravenyDatum2 += datum.charAt(j);
+                }
+            }
+            if(!(new DateValidatorUsingDateFormat("dd/MM/yyyy").isValid(upravenyDatum2))){
+                continue;
+            }
+
+            //osetrenie teploty 20-50 stupne
+            if(Integer.parseInt(teplota)<20 || Integer.parseInt(teplota)>50){
+                continue;
+            }
+
+            String upravenyDatum = "";
+            //dame pomlcky namiesto bodiek
+            for(int j = 0; j < datum.length(); j++){
+                if(datum.charAt(j) == '.'){
+                    upravenyDatum += '-';
+                }else{
+                    upravenyDatum += datum.charAt(j);
+                }
+            }
+            SimpleDateFormat formatter1=new SimpleDateFormat("dd-MM-yyyy HH:mm");
+            Date date1=formatter1.parse(upravenyDatum + " " + cas);
+
+            Data data = new Data(date1, Integer.parseInt(teplota));
+            list2.add(data);
+        }
+        return list2;
+    }
 }
